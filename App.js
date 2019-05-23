@@ -1,50 +1,29 @@
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import  Prueba from './src/components/prueba';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import { store, persistor } from './src/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
-type Props = {};
-export default class App extends Component<Props> {
+import Prueba from './src/components/prueba';
+
+
+
+export default class App extends Component {
   render() {
+    console.log('iniciando ');
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Bienvenido a la aplicación de cascos</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <Prueba/>
-        <Prueba/>
-        <Prueba/>
-        <Prueba/>
-        <Prueba/>
-        <Prueba/>
-        <Prueba/>
-      </View>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <View>
+            <Text>React native + Redux + Redux Persist</Text>
+            <Prueba/>
+          </View>
+        </PersistGate>
+      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+
