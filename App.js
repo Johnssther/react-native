@@ -1,12 +1,14 @@
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 
 import { store, persistor } from './src/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import Prueba from './src/components/prueba';
+import Login from './src/components/login';
+import AppNavigatorWithState from './src/app-navigation-with-state';
 
 
 
@@ -16,10 +18,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <View>
-            <Text>React native + Redux + Redux Persist</Text>
-            <Prueba/>
-          </View>
+          
         </PersistGate>
       </Provider>
     );
