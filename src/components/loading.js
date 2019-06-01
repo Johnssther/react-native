@@ -1,7 +1,7 @@
 
-import React, { Component } from 'react';
+import { React, Component } from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 class Loading extends Component {
 
@@ -9,8 +9,11 @@ class Loading extends Component {
     const { session } = this.props;
 
     return (
-      <Text>OK</Text>
-      <Text>OK</Text>
+      <View>
+        <Text>
+          CARGANDO...
+        </Text>
+      </View>
     )
   }
 }

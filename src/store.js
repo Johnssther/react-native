@@ -4,9 +4,9 @@ import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
-import  rootReducer  from './redux/reducer/index';
+import rootReducer from './redux/reducer/index';
 
-const persistConfig = { 
+const persistConfig = {
     key: 'root',
     storage,
     blacklist: ['navigation']
@@ -15,11 +15,11 @@ const persistConfig = {
 const persisterReducer = persistReducer(persistConfig, rootReducer);
 
 const navigation = createReactNavigationReduxMiddleware(
-    'root',
+
     state => state.navigation
 );
 
 const store = createStore(persisterReducer, applyMiddleware(logger, navigation));
-const persistor = persistStore( store );
+const persistor = persistStore(store);
 
 export { store, persistor }

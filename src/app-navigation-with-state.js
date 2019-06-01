@@ -1,35 +1,30 @@
-import { Component } from 'react-native';
+
 import { connect } from 'react-redux';
-import { reduxifyNavigator } from 'react-navigation-redux-helpers';
-import { BackHandler } from 'reac-native';
-import { NavigationActions} from 'react-native';
+import { BackHandler } from 'react-native';
+import { createAppContainer, NavigationActions } from 'react-navigation';
 
-import { AppNavigator }  from'./app-navigator';
+import AppNavigator from './app-navigator';
 
-const ReduxifyApp = reduxifyNavigator(AppNavigator, 'root')
+const Navigation = createAppContainer(AppNavigator);
 
-class AppNavigatorWithState extends ReduxifyApp {
+class AppNavigatorWithState extends Navigation {
+ componentDidMount = () => {
+   BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+ }
 
-    componentDidMount = () => {
-      BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
-    }
-  
-    componentWillUnmount = () =>
-      BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
-    }
-  
-    onBackPress = () => {
-      // Default Back
-      this.props.dispatch(
-        NavigationActions.back({ key: null })
-      )
-      return true
-    }
-  
-  
-  const mapStateToProps = state => ({
-    state: state.navigation
-  })
-  
-  export default connect(mapStateToProps)(AppNavigatorWithState)
-  
+ componentWillUnmount = () => {
+   BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+ }
+
+ onBackPress = () => {
+   // Default Back
+   this.props.dispatch( NavigationActions.back({ key: null }) )
+   return true
+ }
+}
+
+const mapStateToProps = state => ({
+ state: state.navigation
+})
+
+export default connect(mapStateToProps)(AppNavigatorWithState)
