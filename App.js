@@ -9,13 +9,13 @@ import AppNavigatorWithState from 'cascos/src/app-navigator-with-state';
 
 export default class App extends Component {
  render() {
-   return (
-     <Provider store={store}>
-       <PersistGate loading={<Loading />} persistor={persistor}>
-         <AppNavigatorWithState />
-       </PersistGate>
-     </Provider>
-   )
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <AppNavigatorWithState />
+      </PersistGate>
+    </Provider>
+  )
  }
 }
 

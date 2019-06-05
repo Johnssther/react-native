@@ -1,5 +1,4 @@
-
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
 
@@ -11,7 +10,7 @@ class Loading extends Component {
     return (
       <View>
         <Text>
-          CARGANDO...
+          Inicializando aplicación...
         </Text>
       </View>
     )

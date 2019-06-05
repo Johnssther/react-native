@@ -1,5 +1,5 @@
-
 import { connect } from 'react-redux';
+import { reduxifyNavigator } from 'react-navigation-redux-helpers';
 import { BackHandler } from 'react-native';
 import { createAppContainer, NavigationActions } from 'react-navigation';
 
