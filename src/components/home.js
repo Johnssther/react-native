@@ -1,21 +1,38 @@
 import React, { PureComponent } from 'react'
-import { SafeAreaView, Text } from 'react-native'
+import { SafeAreaView, Text, StatusBar, Button } from 'react-native'
 import { connect } from 'react-redux'
+import { actions } from '../redux/actions/index';
+import styles from '../stylesheets/loader'
+
+
 
 class Home extends PureComponent {
+    press = () => {
+        this.props.dispatch(actions.session.delUser())
+        this.props.navigation.navigate('loading');
+        console.log('state')
+    }
     render() {
         const { user } = this.props
         return (
-            <SafeAreaView>
-                <Text> Home </Text>
+            <SafeAreaView style={styles.container}>
+                <StatusBar backgroundColor="orange"  hidden={false} />
+                <Text> Bienvenido al Home </Text>
+                <Button
+                    onPress={this.press}
+                    title="Cerrar Sesión"
+                    color="green"
+                    accessibilityLabel="Learn more about this purple button"
+                />
+
             </SafeAreaView>
         )
     }
 
-} 
+}
 
 const mapStateToProps = state => ({
-    user:state.session.user
+    user: state.session.user
 })
 
 export default connect(mapStateToProps)(Home)
