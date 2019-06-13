@@ -11,7 +11,7 @@ class Loading extends Component {
       this.props.navigation.navigate('Login');
     }
     else {
-      this.props. navigation.navigate('Home');
+      this.props.navigation.navigate('Home');
     }
   }
 

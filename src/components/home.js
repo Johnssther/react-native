@@ -1,11 +1,10 @@
-import React, { PureComponent } from 'react-native';
-import { connect } from 'react-redux';
-import { SafeAreaView, Text } from 'react-navigation';
+import React, { PureComponent } from 'react'
+import { SafeAreaView, Text } from 'react-native'
+import { connect } from 'react-redux'
 
 class Home extends PureComponent {
-
-
     render() {
+        const { user } = this.props
         return (
             <SafeAreaView>
                 <Text> Home </Text>
@@ -15,6 +14,8 @@ class Home extends PureComponent {
 
 } 
 
-mapState
+const mapStateToProps = state => ({
+    user:state.session.user
+})
 
-export default connect()(Home)
+export default connect(mapStateToProps)(Home)

@@ -1,15 +1,15 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, Image } from 'react-native';
-import { StyleSheet } from '../stylessheets/loader';
+import { SafeAreaView, StatusBar, Image, Text } from 'react-native';
+import styles from '../stylesheets/loader'
 
-function Loader(props) {
+
+ Loader = (props)  => {
     return(
-        <SafeAreaView>
-            <StatusBar hidden={true} />
-            <Image source={require('../assets/img/logo.png')} style={StyleSheet.logo}/>
-        </SafeAreaView> 
-        
-        
+    <SafeAreaView style={styles.container}>
+        <StatusBar backgroundColor="blue"  hidden={true} />
+          <Image source={require('../assets/img/koi.png')} style={styles.logo}/>
+          <Text>Realizado por Koi-ti</Text>
+      </SafeAreaView>
     )
 }
 
