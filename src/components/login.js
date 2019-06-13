@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import  { TextInput, View, Text, Button, Image } from 'react-native';
-
+import { connect } from 'react-redux';
+import { SafeAreaView } from 'react-navigation';
+import actions from '../redux/actions/index';
 
 class Login extends Component {
     constructor (props) {
@@ -13,7 +15,7 @@ class Login extends Component {
     onPressButton = () => { 
         this.setState((state, props) => {
             return { user: state.user, password: state.password }
-        }) 
+        })
         console.log('cambiando de estado');
         console.log('Usuario:',this.state.user);
         console.log('Contraceña:',this.state.password);
@@ -22,7 +24,7 @@ class Login extends Component {
 
     render() {
         return (
-            <View>
+            <SafeAreaView>
                 <Image source={require('../assets/img/koi.png')}
                 style={{width: 180, height: 60}}
                 ></Image>
@@ -47,9 +49,15 @@ class Login extends Component {
                 accessibilityLabel="Learn more about this purple button"
                 />
 
-            </View>
+            </SafeAreaView>
         )
     }
 }
+// conecta el componente a redux
+const mapStateToProps = state => ({  
+    user: state.session.user
+})
 
-export default Login;
+export default connect(mapStateToProps)(Login);
+
+

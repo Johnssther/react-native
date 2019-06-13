@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View } from 'react-native';
+import Loader from './loader';
 
 class Loading extends Component {
 
-  render() {
+  componentDidMount() {
     const { session } = this.props;
+   
+    if(!session.user) {
+      this.props.navigation.navigate('Login');
+    }
+    else {
+      this.props. navigation.navigate('Home');
+    }
+  }
 
+  render() {
     return (
-      <View>
-        <Text>
-          Inicializando aplicación...
-        </Text>
-      </View>
+      <Loader/>
     )
   }
 }
