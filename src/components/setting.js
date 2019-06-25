@@ -1,30 +1,31 @@
 import React, { PureComponent } from 'react'
-import { SafeAreaView, Text, StatusBar, Button } from 'react-native'
+import { SafeAreaView, Text, StatusBar } from 'react-native'
 import { connect } from 'react-redux'
 import { actions } from '../redux/actions/index';
 import styles from '../stylesheets/loader';
+import { Button } from 'react-native-elements';
 
 
 
-class Settings extends PureComponent {
-    press = () => {
-        this.props.dispatch(actions.session.logout())
-
-        this.props.navigation.navigate('Loading');
-        console.log(this.props);
+class Setting extends PureComponent {
+    logout = () => {
+        this.props.dispatch(actions.session.logout());
+        this.props.navigation.navigate('Loading')
     }
     render() {
         const { user } = this.props
         return (
             <SafeAreaView style={styles.container}>
-                <StatusBar backgroundColor="orange"  hidden={false} />
-                <Text> Bienvenido al Home </Text>
+                <StatusBar backgroundColor="orange" hidden={false} />
+                <Text>Sr. {user.name} Esta en la configuración de la aplicación</Text>
+                
                 <Button
-                    onPress={this.press}
+                    onPress={this.logout}
                     title="Cerrar Sesión"
-                    color="green"
-                    accessibilityLabel="Learn more about this purple button"
+                    color="error"
                 />
+                
+
 
             </SafeAreaView>
         )
@@ -36,4 +37,6 @@ const mapStateToProps = state => ({
     user: state.session.user
 })
 
-export default connect(mapStateToProps)(Settings)
+export default connect(mapStateToProps)(Setting)
+
+

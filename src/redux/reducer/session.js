@@ -1,6 +1,6 @@
 const initialState = {
     user: null,
-    loading:false
+    loading: false
 }
 
 function session(state = initialState, action) {
