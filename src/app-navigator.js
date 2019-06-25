@@ -4,12 +4,14 @@ import Loading from './components/loading';
 import Login from './components/login';
 import Home from './components/home';
 import Setting from './components/setting';
+import Perfil from './components/perfil';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const TabNavigator = createBottomTabNavigator(
   {
     Setting,
-    Home
+    Home,
+    Perfil
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -18,6 +20,9 @@ const TabNavigator = createBottomTabNavigator(
         let iconName;
         if (routeName === 'Home') {
           iconName = `ios-home`;
+        }
+        if (routeName === 'Perfil') {
+          iconName = `ios-contact`;
         } else if (routeName === 'Setting') {
           iconName = `ios-settings`;
         }
