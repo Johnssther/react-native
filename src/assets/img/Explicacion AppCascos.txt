@@ -1,0 +1,30 @@
+
+
+Primera seccion      (tabla Factura1)
+
+Primer boton. titulo del boton: Nombre del mes actual. 
+			numero se refiere al numero de facturas realizadas en ese mes (filtro fac_fe_emision)
+			subtotal mes re refiere a la sumatoria de fac_subtiotal   de ese mes (filtro fac_fe_emision)
+			
+Segundo boton. titulo del boton: Fecha ultima factura:   campo    max(fac_fh_final) de factura1
+			numero se refiere al numero de facturas realizadas en ese dia (filtro fac_fe_emision)
+			subtotal mes re refiere a la sumatoria de fac_subtiotal   de ese dia (filtro fac_fe_emision)
+			
+Ocupacion.  se refiere a la sumatoria de registro de la tabla Activos
+
+Segunda Seccion  (tabla Monedas)  Titulo del boton  'Hopper ' +  sumatoria(m_denominacion*m_hopper)
+		Denominacion =  m_denominacion
+		Numero = m_hopper
+		Valor = Denominacion * Numero
+		
+Tercera Seccion  (tabla Coin) Titulo del boton 'Cofre Monedas' + sumatoria(c_denominacion*c_cofre)
+		Denominacion = c_denominacion
+		Numero = c_cofre
+		Valor = c_denominacion * c_cofre
+			* Ojo agrupacion por c_denominacion, para que no se repitan denominaciones
+			
+Cuarta Seccion  (tabla Billetes) Titulo del boton 'Cofre Billetes' + sumatoria(b_denominacion*b_cofre)
+        Denominacion = b_denominacion
+		Numero = b_cofre
+		Valor = b_denominacion * c_cofre
+		

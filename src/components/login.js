@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SafeAreaView } from 'react-navigation';
-import { TextInput, View, Text, Button, Image } from 'react-native';
+import { TextInput, View, Text, Image, SafeAreaView } from 'react-native';
+import { Button } from 'react-native-elements';
+//import { NavigationActions } from 'react-navigation';
+
 import { actions } from '../redux/actions/index';
 import styles from '../stylesheets/loader'
+import Loader from './loader';
+
+
 
 class Login extends Component {
+
+    /* 
+        constructor  (props)  {
+            super(props);
     
-    press = () => {
-        this.props.dispatch(actions.session.setUser({ id: 1, name: 'John' }))
-        this.props.navigation.navigate('Loading');
-    }
+            this.state = {  
+                loading : false
+            }
+        } */
+
+    /*   press = () => {
+          this.setState({ loading:true });
+          this.props.actions.onLogin();
+      } */
 
     render() {
+        const { loading } = this.props;
+
+        if ( loading ) {
+            return <Loader />
+        }
         return (
+
 
             <SafeAreaView style={styles.container}>
                 <Image source={require('../assets/img/logo.png')} style={styles.logo} />
@@ -21,29 +41,48 @@ class Login extends Component {
                 <TextInput
                     style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1 }}
                     placeholder="Ingrese Usuario"
-                  //  onChangeText={(user) => this.setState({ user })}
+                //  onChangeText={(user) => this.setState({ user })}
                 />
                 <Text>Contrasettña</Text>
                 <TextInput
                     style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1 }}
                     placeholder="Ingrese Contracerña"
                     secureTextEntry={true}
-                   // onChangeText={(password) => this.setState({ password })}
+                // onChangeText={(password) => this.setState({ password })}
                 />
+
                 <Button
-                    onPress={this.press}
+                    onPress={this.props.actions.onLogin}
                     title="Iniciar Sesión"
-                    color="#006400"
-                   // accessibilityLabel="Learn more about this purple button"
+                    type="outline"
+                    loading={loading}
+
                 />
 
             </SafeAreaView>
         )
     }
 }
+
+
 // conecta el componente a redux
 const mapStateToProps = state => ({
-    user: state.session.user
+    user: state.session.user,
+    loading: state.session.loading,
 })
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    actions: {
+        onLogin: () => {
+            dispatch(actions.session.loading(true))
+            setTimeout(() => {
+                dispatch(actions.session.setUser({ id: 1, name: 'John' }))
+                dispatch(actions.session.loading())
+                ownProps.navigation.navigate('Loading')
+
+            }, 1000);
+        }
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

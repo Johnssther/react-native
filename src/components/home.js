@@ -2,15 +2,16 @@ import React, { PureComponent } from 'react'
 import { SafeAreaView, Text, StatusBar, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { actions } from '../redux/actions/index';
-import styles from '../stylesheets/loader'
+import styles from '../stylesheets/loader';
 
 
 
 class Home extends PureComponent {
     press = () => {
-        this.props.dispatch(actions.session.delUser())
-        this.props.navigation.navigate('loading');
-        console.log('state')
+        this.props.dispatch(actions.session.logout())
+
+        this.props.navigation.navigate('Loading');
+        console.log(this.props);
     }
     render() {
         const { user } = this.props

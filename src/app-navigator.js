@@ -3,6 +3,7 @@ import Loading from './components/loading';
 import Login from './components/login';
 import Home from './components/home';
 
+
 const SwitchNavigator = createSwitchNavigator(
   {
       Loading,

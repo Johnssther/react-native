@@ -5,9 +5,16 @@ export const setUser = payload => {
     };
 }
 
-export const delUser = () => {
+export const logout = () => {
     return {
-        type: 'DEL_USER',
-        
+        type: 'LOGOUT',
     };
+}
+
+export const loading = (loading: boolean = false) => {
+    return {
+        type: 'SET_LOADING',
+        payload: loading
+        
+    }
 }

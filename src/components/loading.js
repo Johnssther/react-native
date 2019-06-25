@@ -6,18 +6,17 @@ class Loading extends Component {
 
   componentDidMount() {
     const { session } = this.props;
-   
-    if(!session.user) {
+
+    if (!session.user) {
       this.props.navigation.navigate('Login');
-    }
-    else {
+    } else {
       this.props.navigation.navigate('Home');
     }
   }
 
   render() {
     return (
-      <Loader/>
+      <Loader />
     )
   }
 }
