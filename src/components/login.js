@@ -43,10 +43,10 @@ class Login extends Component {
                     placeholder="Ingrese Usuario"
                 //  onChangeText={(user) => this.setState({ user })}
                 />
-                <Text>Contrasettña</Text>
+                <Text>Contraceña</Text>
                 <TextInput
                     style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1 }}
-                    placeholder="Ingrese Contracerña"
+                    placeholder="Ingrese La Contraceña"
                     secureTextEntry={true}
                 // onChangeText={(password) => this.setState({ password })}
                 />

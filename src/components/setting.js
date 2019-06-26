@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
-import { SafeAreaView, Text, StatusBar } from 'react-native'
+import { SafeAreaView, Text, StatusBar, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { actions } from '../redux/actions/index';
 import styles from '../stylesheets/loader';
-import { Button } from 'react-native-elements';
+// import { Button } from 'react-native-elements';
 
 
 
@@ -17,12 +17,12 @@ class Setting extends PureComponent {
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor="orange" hidden={false} />
-                <Text>Sr. {user.name} Esta en la configuración de la aplicación</Text>
+                <Text>Logout {user.name}</Text>
                 
                 <Button
                     onPress={this.logout}
                     title="Cerrar Sesión"
-                    color="error"
+                    color="red"
                 />
                 
 
