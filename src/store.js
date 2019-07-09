@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 import rootReducer from './redux/reducer/index';
@@ -19,7 +20,7 @@ const navigation = createReactNavigationReduxMiddleware(
     state => state.navigation
 );
 
-const store = createStore(persisterReducer, applyMiddleware(logger, navigation));
+const store = createStore(persisterReducer, applyMiddleware(logger, navigation, thunk));
 const persistor = persistStore(store);
 
 export { store, persistor }
