@@ -5,15 +5,7 @@ import { actions } from '../redux/actions/index';
 import styles from '../stylesheets/loader';
 import { getPlaces } from '../services/user';
 
-
-
-
 class Home extends PureComponent {
-
-    logout = () => {
-        this.props.dispatch(actions.session.logout())
-        this.props.navigation.navigate('Loading');
-    }
     componentDidMount() {
         this.props.actions.getPlaces();
     }
@@ -22,9 +14,8 @@ class Home extends PureComponent {
         const { user, places } = this.props
         return (
             <SafeAreaView>
-                <Text>Bienvenido {user.name} al inicio</Text>
-                <FlatList 
-                data = {places}
+                <FlatList
+                    data={places}
                 />
             </SafeAreaView>
         )
@@ -36,7 +27,8 @@ const mapDispatchToProps = dispatch => ({
     actions: {
         getPlaces: () => {
             console.log('recuperando datos');
-            dispatch(getPlaces())
+            dispatch(getPlaces());
+
         }
     }
 })
@@ -46,4 +38,4 @@ const mapStateToProps = state => ({
     places: state.places
 })
 
-export default connect(mapStateToProps, mapStateToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
