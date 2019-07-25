@@ -6,7 +6,8 @@ import navigationReducer from './navigation';
 
 const rootReducer = combineReducers({
     session,
-   navigationReducer
+    navigationReducer,
+    places
 })
 
 export default rootReducer

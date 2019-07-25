@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react'
 import { SafeAreaView, Text, StatusBar, Button, FlatList } from 'react-native'
 import { connect } from 'react-redux'
-import { actions } from '../redux/actions/index';
-import styles from '../stylesheets/loader';
 import { getPlaces } from '../services/user';
+import PlacesItem from '../components/placesItem';
 
 class Home extends PureComponent {
+    keyExtractor = item => item.sitio_codigo.toString()
     componentDidMount() {
         this.props.actions.getPlaces();
     }
@@ -16,6 +16,8 @@ class Home extends PureComponent {
             <SafeAreaView>
                 <FlatList
                     data={places}
+                    keyExtractor={this.keyExtractor}
+                    renderItem={({ item }) => <PlacesItem item={item} />}
                 />
             </SafeAreaView>
         )
